@@ -23,7 +23,7 @@ arch-chroot /mnt useradd -m -G wheel pino
 arch-chroot /mnt passwd pino
 arch-chroot /mnt bootctl install
 echo -ne "default windows.conf\ntimeout menu-force\neditor false\nauto-entries false" > /mnt/boot/loader/loader.conf
-echo -ne "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\noptions root=/dev/nvme0n1p3 rw nvidia_drm.modeset=1" > /mnt/boot/loader/entries/archlinux.conf
+echo -ne "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\noptions root=/dev/nvme0n1p4 rw nvidia_drm.modeset=1" > /mnt/boot/loader/entries/archlinux.conf
 echo -ne "title Windows\nefi /EFI/Microsoft/Boot/bootmgfw.efi" > /mnt/boot/loader/entries/windows.conf
 
 read -p "debug"
