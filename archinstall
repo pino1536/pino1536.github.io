@@ -1,14 +1,17 @@
 #!/bin/bash
 (
-    echo n
-    echo  
-    echo  
-    echo +100G
-    echo t
-    echo  
-    echo 23
-    echo w
+   echo d
+   evho 4
+   echo n
+   echo 4
+   echo  
+   echo +100G
+   echo t
+   echo 4
+   echo 23
+   echo w
 ) | fdisk --wipe-partitions always /dev/nvme0n1
+read -p "debug"
 mkfs.ext4 -L archlinux /dev/nvme0n1p4
 mount /dev/disk/by-label/archlinux /mnt
 mkdir /mnt/boot
