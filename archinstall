@@ -1,7 +1,7 @@
 #!/bin/bash
 (
    echo d
-   evho 4
+   echo 4
    echo n
    echo 4
    echo  
