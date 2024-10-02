@@ -16,7 +16,7 @@ mkfs.ext4 -L archlinux /dev/nvme0n1p4
 mount /dev/disk/by-label/archlinux /mnt
 mkdir /mnt/boot
 mount -o umask=077 /dev/disk/by-label/SYSTEM /mnt/boot
-pacstrap -K /mnt base linux linux-firmware amd-ucode nvidia networkmanager plasma
+pacstrap -K /mnt base linux linux-firmware amd-ucode nvidia networkmanager firefox kitty hyprland
 genfstab -U /mnt >> /mnt/etc/fstab
 ln -sf /mnt/usr/share/zoneinfo/Europe/Berlin /mnt/etc/localtime
 echo "en_US.UTF-8 UTF-8" > /mnt/etc/locale.gen
@@ -30,7 +30,7 @@ arch-chroot /mnt useradd -m -G wheel pino
 arch-chroot /mnt passwd pino
 arch-chroot /mnt bootctl install
 echo -ne "default windows.conf\ntimeout menu-force\neditor false\nauto-entries false" > /mnt/boot/loader/loader.conf
-echo -ne "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\noptions root=/dev/nvme0n1p4 rw nvidia_drm.modeset=1" > /mnt/boot/loader/entries/archlinux.conf
+echo -ne "title Arch Linux\nlinux /vmlinuz-linux\ninitrd /amd-ucode.img\ninitrd /initramfs-linux.img\noptions root=/dev/nvme0n1p4 rw nvidia_drm.modeset=1 nvidia_drm.fbdev=1" > /mnt/boot/loader/entries/archlinux.conf
 echo -ne "title Windows\nefi /EFI/Microsoft/Boot/bootmgfw.efi" > /mnt/boot/loader/entries/windows.conf
 read -p "debug"
 reboot
